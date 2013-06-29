@@ -26,10 +26,7 @@ func getNode(word string, node *trie.Trie) *trie.Trie {
 	if word == "" {
 		return node
 	}
-	// TODO: Is there a better way than TrimPrefix to get all but
-	// the first character of a word?
-	c := rune(word[0])
-	return getNode(strings.TrimPrefix(word, string(c)), node.Next(c))
+	return getNode(word[1:len(word)], node.Next(rune(word[0])))
 }
 
 func Score(word string) (score int) {
