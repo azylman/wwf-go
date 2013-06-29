@@ -51,32 +51,10 @@ func (dict *Dict) wordSearch(word, contains, end string, score, numWildcards int
 	}
 
 	if numWildcards > 0 {
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('a'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('b'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('c'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('d'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('e'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('f'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('g'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('h'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('i'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('j'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('k'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('l'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('m'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('n'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('o'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('p'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('q'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('r'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('s'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('t'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('u'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('v'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('w'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('x'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('y'))
-		count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next('z'))
+		alphabet := "abcdefghijklmnopqrstuvwxyz"
+		for _, c := range alphabet {
+			count += dict.wordSearch(word, contains, end, score, numWildcards-1, results, node.Next(c))
+		}
 	}
 
 	for _, c := range word {
