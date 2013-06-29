@@ -1,9 +1,5 @@
 package trie
 
-import (
-	"strings"
-)
-
 type Trie struct {
 	word     string
 	size     int
@@ -24,7 +20,7 @@ func (t *Trie) Next(c rune) *Trie {
 
 func (t *Trie) AddWord(word string) {
 	t.size++
-	var temp *Trie = t
+	temp := t
 	for _, c := range word {
 		temp = temp.addBranch(c)
 	}
@@ -36,14 +32,6 @@ func (t *Trie) addBranch(c rune) *Trie {
 		t.children[c] = New()
 	}
 	return t.children[c]
-}
-
-func (t *Trie) String() string {
-	res := []string{}
-	for key, val := range t.children {
-		res = append(res, string(key)+":{"+val.String()+"}")
-	}
-	return "{word:" + t.word + ",children:" + strings.Join(res, ",")
 }
 
 func New() *Trie {
